@@ -30,7 +30,7 @@ class ClassyEventsContainer extends React.Component {
 
     createNewEvent = async (e) => {
         e.preventDefault();
-        const apiResponse = await fetch("http://localhost:8000/api/events/", {
+        const apiResponse = await fetch("https://wrestl-api-backend.herokuapp.com/api/events/", {
             method: "POST",
             body: JSON.stringify(this.state.newEvent),
             headers: {
@@ -47,7 +47,7 @@ class ClassyEventsContainer extends React.Component {
     }
 
     async getEvents() {
-        const getEventsApiResponse = await fetch("http://localhost:8000/api/events/")
+        const getEventsApiResponse = await fetch("https://wrestl-api-backend.herokuapp.com/api/events/")
         const parsedEvents = await getEventsApiResponse.json();
         this.setState({
             events: parsedEvents
@@ -56,7 +56,7 @@ class ClassyEventsContainer extends React.Component {
 
 
     deleteEvent = async (idToDelete) => {
-        const deleteResponse = await fetch(`http://localhost:8000/api/events/${idToDelete}`, {
+        const deleteResponse = await fetch(`https://wrestl-api-backend.herokuapp.com/api/events/${idToDelete}`, {
             method: "DELETE"
         })
         if (deleteResponse.status === 204) {
@@ -67,7 +67,7 @@ class ClassyEventsContainer extends React.Component {
     }
 
     updateEvent = async (idToUpdate, eventToUpdate) => {
-        const updateResponse = await fetch(`http://localhost:8000/api/events/${idToUpdate}`, {
+        const updateResponse = await fetch(`https://wrestl-api-backend.herokuapp.com/api/events/${idToUpdate}`, {
             method: "PUT",
             body: JSON.stringify(eventToUpdate),
             headers: {
