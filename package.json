@@ -1,4 +1,11 @@
 {
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "npm": "8.4.1",
+    "node": "17.5.0"
+  },
   "dependencies": {
     "react-router-dom": "^6.3.0"
   }
