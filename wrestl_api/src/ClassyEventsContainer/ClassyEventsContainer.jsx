@@ -37,13 +37,14 @@ class ClassyEventsContainer extends React.Component {
                 'Content-Type': "application/json"
             }
         })
+        if(apiResponse.status === 201){
         const creationResponseParsed = await apiResponse.json()
         console.log(creationResponseParsed)    
         this.setState({
             events: [...this.state.events, creationResponseParsed]
         })
     }
-    
+}
 
     async getEvents() {
         const getEventsApiResponse = await fetch("http://localhost:8000/api/events/")
@@ -52,6 +53,22 @@ class ClassyEventsContainer extends React.Component {
             events: parsedEvents
         })
     }
+
+    deleteEvent = async (idToDelete) => {
+        const deleteResponse = await fetch(`http://localhost:8000/api/events/${idToDelete}`, {
+        method: "DELETE"
+        })
+        if(deleteResponse.status === 204){
+            this.setState({
+                events: this.state.events.filter(e => e.id !== idToDelete)
+            })
+    }
+}
+
+    updateEvent = async (idToUpdate) =>{
+        
+    }
+
 
     componentDidMount() {
         this.getEvents()
@@ -66,7 +83,7 @@ class ClassyEventsContainer extends React.Component {
                     handleNewEventInputChange={this.handleNewEventInputChange}>
                     </NewEventsComponent>
                 {this.state.events.map((event) => {
-                    return <SingleEventComponent event={event} key={`event-${event.id}`}>{JSON.stringify(event)}</SingleEventComponent>
+                    return <SingleEventComponent deleteEvent={this.deleteEvent}event={event} key={`event-${event.id}`}>{JSON.stringify(event)}</SingleEventComponent>
                 })}
             </div>
         )
