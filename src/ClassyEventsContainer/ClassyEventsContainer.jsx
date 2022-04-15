@@ -30,7 +30,7 @@ class ClassyEventsContainer extends React.Component {
 
     createNewEvent = async (e) => {
         e.preventDefault();
-        const apiResponse = await fetch("https://wrestl-api-backend.herokuapp.com/api/events/", {
+        const apiResponse = await fetch("https://wrestl-api-backend.herokuapp.com/api/events", {
             method: "POST",
             body: JSON.stringify(this.state.newEvent),
             headers: {
@@ -47,7 +47,7 @@ class ClassyEventsContainer extends React.Component {
     }
 
     async getEvents() {
-        const getEventsApiResponse = await fetch("https://wrestl-api-backend.herokuapp.com/api/events/")
+        const getEventsApiResponse = await fetch("https://wrestl-api-backend.herokuapp.com/api/events")
         const parsedEvents = await getEventsApiResponse.json();
         this.setState({
             events: parsedEvents
