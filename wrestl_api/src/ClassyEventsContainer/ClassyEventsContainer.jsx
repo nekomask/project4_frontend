@@ -37,14 +37,14 @@ class ClassyEventsContainer extends React.Component {
                 'Content-Type': "application/json"
             }
         })
-        if(apiResponse.status === 201){
-        const creationResponseParsed = await apiResponse.json()
-        console.log(creationResponseParsed)    
-        this.setState({
-            events: [...this.state.events, creationResponseParsed]
-        })
+        if (apiResponse.status === 201) {
+            const creationResponseParsed = await apiResponse.json()
+            console.log(creationResponseParsed)
+            this.setState({
+                events: [...this.state.events, creationResponseParsed]
+            })
+        }
     }
-}
 
     async getEvents() {
         const getEventsApiResponse = await fetch("http://localhost:8000/api/events/")
@@ -54,20 +54,34 @@ class ClassyEventsContainer extends React.Component {
         })
     }
 
+
     deleteEvent = async (idToDelete) => {
         const deleteResponse = await fetch(`http://localhost:8000/api/events/${idToDelete}`, {
-        method: "DELETE"
+            method: "DELETE"
         })
-        if(deleteResponse.status === 204){
+        if (deleteResponse.status === 204) {
             this.setState({
                 events: this.state.events.filter(e => e.id !== idToDelete)
             })
+        }
+    }
+
+    updateEvent = async (idToUpdate, eventToUpdate) => {
+        const updateResponse = await fetch(`http://localhost:8000/api/events/${idToUpdate}`, {
+            method: "PUT",
+            body: JSON.stringify(eventToUpdate),
+            headers: {
+                'Content-Type': "application/json"
+            }
+    })
+    if (updateResponse.status === 200) {
+    console.log(updateResponse.status)
+    const parsedEvents = await updateResponse.json();
+        this.setState({
+            events: this.state.events.map(e => e.id === idToUpdate ? parsedEvents: e)
+        })
     }
 }
-
-    updateEvent = async (idToUpdate) =>{
-        
-    }
 
 
     componentDidMount() {
@@ -83,7 +97,7 @@ class ClassyEventsContainer extends React.Component {
                     handleNewEventInputChange={this.handleNewEventInputChange}>
                     </NewEventsComponent>
                 {this.state.events.map((event) => {
-                    return <SingleEventComponent deleteEvent={this.deleteEvent}event={event} key={`event-${event.id}`}>{JSON.stringify(event)}</SingleEventComponent>
+                    return <SingleEventComponent updateEvent={this.updateEvent} deleteEvent={this.deleteEvent}event={event} key={`event-${event.id}`}>{JSON.stringify(event)}</SingleEventComponent>
                 })}
             </div>
         )
