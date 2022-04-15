@@ -1,11 +1,13 @@
 import './App.css';
-import ItemContainer from './EventContainer/EventContainer';
+import EventContainer from './EventContainer/EventContainer';
+import ClassyEventsContainer from './ClassyEventsContainer/ClassyEventsContainer';
 
 function App() {
   return (
     <div className="App">
 <h1>Events App</h1>
-<ItemContainer></ItemContainer>
+<ClassyEventsContainer></ClassyEventsContainer>
+{/*<EventContainer></EventContainer>*/}
     </div>
   );
 }

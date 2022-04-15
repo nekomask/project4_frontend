@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import SingleEventComponent from "./SingleEventComponent/SingleEventComponent"
+import SingleEventComponent from "../ClassyEventsContainer/SingleEventComponent/SingleEventComponent"
 
 const EventContainer = () => {
     const [events, setEvents] = useState([])
