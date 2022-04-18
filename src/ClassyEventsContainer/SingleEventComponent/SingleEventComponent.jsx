@@ -48,7 +48,7 @@ const SingleEventComponent = (props) => {
             <h4>Noteworthy Events</h4>
             {props.event.noteworthy_events}
             <br></br>
-            <br></br>
+
             <button onClick={() => {
                         if (window.confirm('Are you sure you want to delete this event?')) {
                return props.deleteEvent(props.event.id) 
