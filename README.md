@@ -1,7 +1,7 @@
 # project4_frontend
 # WRESTL API
 
-This is an API for professional wrestling events in the 1990s. I remember when looking for APIs about a month ago that I didn't see any pro-wrestling APIs and I thought the name WRESTL API was a pretty fun play on words to a RESTful API. I was a big pro-wrestling fan in the early-mid 1990s so that's ultimately why I picked that specific era.
+This is an API for professional wrestling events in the 1990s. I remember when looking for APIs about a month ago that I didn't see any pro-wrestling APIs and I thought the name WRESTL API was a pretty fun play on words to a RESTful API. I was a big pro-wrestling fan growing up so that's ultimately why I picked that specific era.
 
 # Technologies
 
@@ -18,4 +18,10 @@ Another issue I ran into that was frustrating and I'm embarrassed to admit, I ma
 Once this project is marked complete, I will likely delete this repo and re-upload at some point, perhaps with an entirely different model if I think of something better.
 
 # Other thoughts
-I think I prefer Javascript way more than Python but I see how others might really enjoy it. I just find the indentations to be very tedious and while f-strings are cool, I'll take regular javascript interpolation over it any day. I'm glad to have had this experience though despite finding database migration to be very frustrating.
+I like Javascript way more than Python but I see how others might really enjoy it. I just find the indentations to be very tedious and while f-strings are cool, I'll take regular javascript strings over it any day. I'm glad to have had this experience though despite finding database migration to be very frustrating.
+
+# Links
+
+Back-end: https://wrestl-api-backend.herokuapp.com/
+
+Front-end: https://wrestl-api-frontend.herokuapp.com/
