@@ -1,7 +1,9 @@
+import '../../App.css';
+
 const NewEventsComponent = (props) => {
     return(
-        <div key="create">
-            <h5>Create a new Wrasslin Event</h5>
+        <div className="create">
+            <h3>Create a new Wrasslin Event</h3>
             <form onSubmit={props.createNewEvent}> 
                 Name: <input onChange={props.handleNewEventInputChange} name="name" type="text"></input>
                 <br></br>
@@ -15,7 +17,7 @@ const NewEventsComponent = (props) => {
                 <br></br>
                 Noteworthy events: <input onChange={props.handleNewEventInputChange} name="noteworthy_events" type="text"></input>
                 <br></br>
-                <button type="submit">Submit</button>
+                <button className="submit" type="submit">Submit</button>
             </form>
         </div>
     )

@@ -1,6 +1,7 @@
 import React from "react";
 import SingleEventComponent from "./SingleEventComponent/SingleEventComponent";
 import NewEventsComponent from "./newEventsComponent/NewEventsComponent";
+import '../App.css';
 
 class ClassyEventsContainer extends React.Component {
     constructor() {
@@ -90,8 +91,8 @@ class ClassyEventsContainer extends React.Component {
     }
     render() {
         return (
-            <div>
-                <h2>Classy Event container</h2>
+            <div className="classy-container">
+                <h2>Pro-Wrestling Events in the 90s</h2>
                 <NewEventsComponent
                     createNewEvent={this.createNewEvent}
                     handleNewEventInputChange={this.handleNewEventInputChange}>

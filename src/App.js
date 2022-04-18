@@ -5,7 +5,7 @@ import ClassyEventsContainer from './ClassyEventsContainer/ClassyEventsContainer
 function App() {
   return (
     <div className="App">
-<h1>Events App</h1>
+<h1>WRESTL API</h1>
 <ClassyEventsContainer></ClassyEventsContainer>
 {/*<EventContainer></EventContainer>*/}
     </div>

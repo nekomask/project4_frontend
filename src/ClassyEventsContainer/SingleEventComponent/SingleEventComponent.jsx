@@ -1,9 +1,10 @@
-import {useState, useEffect} from 'react'
+import { useState, reactDOM, useEffect } from 'react'
+import '../../App.css';
 
-const SingleEventComponent = (props) =>{
+const SingleEventComponent = (props) => {
     const [isValidState, setIsValidState] = useState({ valid: true, message: "" })
     const [showing, setShowing] = useState(false)
-    
+
     const toggleShowing = () => {
         //sets variable equal to its opposite for toggling
         setShowing(!showing)
@@ -38,7 +39,7 @@ const SingleEventComponent = (props) =>{
 
 
     return (
-        <div>
+        <div className="show-event">
             <h3>{props.event.name}</h3>
             <p>This event took place in {props.event.year}</p>
             <p>The best match on the card was {props.event.best_match}</p>
@@ -47,23 +48,30 @@ const SingleEventComponent = (props) =>{
             {props.event.noteworthy_events}
             <br></br>
             <br></br>
-            <button onClick={()=>{props.deleteEvent(props.event.id)}}>DELETE {props.event.name}</button>
+            <button onClick={() => {
+                        if (window.confirm('Are you sure you want to delete this event?')) {
+               return props.deleteEvent(props.event.id) 
+                        }
+            }}>DELETE {props.event.name}</button>
             {
                 showing ?
                     <div id="edit-event-form">
-                        <button onClick={toggleShowing}>x</button>
-                        <form onSubmit={submitUpdateEvent}>
-                        {isValidState.valid ? null : <p className="form-error">{isValidState.message}</p>}
-                        <h2>Update Event</h2>
+                        <button onClick={toggleShowing}>close</button>
+                        <form id="edit" onSubmit={submitUpdateEvent}>
+                            {isValidState.valid ? null : <p className="form-error">{isValidState.message}</p>}
+                            <h2>Update Event</h2>
                             Event Name: <input onChange={handleInputChange} type="text" name="name" value={updateEvent.name} /><br />
                             Year: <input onChange={handleInputChange} type="number" name="year" value={updateEvent.year || ""} /><br />
                             # of matches: <input onChange={handleInputChange} type="text" name="num_matches" value={updateEvent.num_matches || ""} /><br />
+                            Rating: <input onChange={handleInputChange} type="number" name="avg_rating" value={updateEvent.avg_rating || ""} /><br />
+                            Noteworthy Events: <input onChange={handleInputChange} type="text" name="year" value={updateEvent.noteworthy_events || ""} /><br />
                             <button id="submit" type="submit">Submit</button>
-                            </form>
+                        </form>
                     </div>
                     :
-                    <button onClick={toggleShowing}>Edit this event</button>
+                    <button id="edit" onClick={toggleShowing}>Edit this event</button>
             }
+            <br></br>
         </div>
     )
 }
