@@ -43,6 +43,7 @@ const SingleEventComponent = (props) => {
             <h3>{props.event.name}</h3>
             <p>This event took place in {props.event.year}</p>
             <p>The best match on the card was {props.event.best_match}</p>
+            <p>There were {props.event.num_matches} matches</p>
             <p>This show has {props.event.avg_rating} out of 5 stars</p>
             <h4>Noteworthy Events</h4>
             {props.event.noteworthy_events}
@@ -63,6 +64,7 @@ const SingleEventComponent = (props) => {
                             Event Name: <input onChange={handleInputChange} type="text" name="name" value={updateEvent.name} /><br />
                             Year: <input onChange={handleInputChange} type="number" name="year" value={updateEvent.year || ""} /><br />
                             # of matches: <input onChange={handleInputChange} type="text" name="num_matches" value={updateEvent.num_matches || ""} /><br />
+                            Best match: <input onChange={handleInputChange} type="text" name="best_match" value={updateEvent.best_match || ""} /><br />
                             Rating: <input onChange={handleInputChange} type="number" name="avg_rating" value={updateEvent.avg_rating || ""} /><br />
                             Noteworthy Events: <input onChange={handleInputChange} type="text" name="year" value={updateEvent.noteworthy_events || ""} /><br />
                             <button id="submit" type="submit">Submit</button>
